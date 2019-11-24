@@ -4,6 +4,8 @@ import (
 	"crypto/md5"
 	"encoding/hex"
 	"fmt"
+	iHS "github.com/howood/linkedhashmap/internal/hashmapsort"
+	"sort"
 )
 
 const separetor = " "
@@ -82,6 +84,60 @@ func (jc *LinkedHashMap) Values() []interface{} {
 		values = append(values, elem.Value)
 	}
 	return values
+}
+
+// SortKeyAsc sorts linked hashmap ascending order with key
+func (jc *LinkedHashMap) SortKeyAsc() {
+	keys := jc.Keys()
+	sort.Sort(iHS.KeySort(keys))
+	jc.address = make([]string, 0, len(keys))
+	for _, key := range keys {
+		hashkey := jc.generateHash(key)
+		jc.address = append(jc.address, hashkey)
+	}
+}
+
+// SortKeyDesc sorts linked hashmap descending order with key
+func (jc *LinkedHashMap) SortKeyDesc() {
+	keys := jc.Keys()
+	sort.Sort(sort.Reverse(iHS.KeySort(keys)))
+	jc.address = make([]string, 0, len(keys))
+	for _, key := range keys {
+		hashkey := jc.generateHash(key)
+		jc.address = append(jc.address, hashkey)
+	}
+}
+
+// SortValueAsc sorts linked hashmap ascending order with value
+func (jc *LinkedHashMap) SortValueAsc() {
+	sortvalue := iHS.ValueSort{}
+	for k, v := range jc.elements {
+		sortvalue = append(sortvalue, iHS.SortElement{
+			Hashkey: k,
+			Value:   v.Value,
+		})
+	}
+	sort.Sort(sortvalue)
+	jc.address = make([]string, 0, len(sortvalue))
+	for _, sortelement := range sortvalue {
+		jc.address = append(jc.address, sortelement.Hashkey)
+	}
+}
+
+// SortValueDesc sorts linked hashmap descending order with value
+func (jc *LinkedHashMap) SortValueDesc() {
+	sortvalue := iHS.ValueSort{}
+	for k, v := range jc.elements {
+		sortvalue = append(sortvalue, iHS.SortElement{
+			Hashkey: k,
+			Value:   v.Value,
+		})
+	}
+	sort.Sort(sort.Reverse(sortvalue))
+	jc.address = make([]string, 0, len(sortvalue))
+	for _, sortelement := range sortvalue {
+		jc.address = append(jc.address, sortelement.Hashkey)
+	}
 }
 
 func (jc *LinkedHashMap) generateHash(key interface{}) string {
