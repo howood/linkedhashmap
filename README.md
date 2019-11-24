@@ -19,7 +19,7 @@ $ go get -u github.com/howood/linkedhashmap
 # Usage
 
 ```
-	// create new
+	// Create new
 	lMap := NewLinkedHashMap()
 
 	// Set map data
@@ -43,11 +43,12 @@ $ go get -u github.com/howood/linkedhashmap
 	for lm := range lMap.Iter() {
 		log.Printf("%v: %v", lm.Key, lm.Value)
 	}
-	// sort with key
+
+	// Sort with key
 	lMap.SortKeyAsc()
 	lMap.SortKeyDesc()
 
-	// sort with value
+	// Sort with value
 	lMap.SortValueAsc()
 	lMap.SortValueDesc()
 
