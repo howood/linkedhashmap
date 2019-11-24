@@ -70,3 +70,133 @@ func Test_LinkedHashedMap(t *testing.T) {
 
 	t.Log("success LinkedHashedMap")
 }
+
+func Test_LinkedHashedMapSort1(t *testing.T) {
+	lMap := NewLinkedHashMap()
+
+	lMap.Put("tokyo", 3)
+	lMap.Put("yokohama", 23)
+	lMap.Put("kyoto", 44)
+	lMap.Put("sapporo", 65)
+	lMap.Put("fukuoka", 76)
+	lMap.Put("hiroshima", 74)
+	lMap.Put("sendai", 37)
+	lMap.Put("osaka", 89)
+
+	lMap.SortKeyAsc()
+	t.Log(lMap.Keys())
+	t.Log(lMap.Values())
+	count := 0
+	for lm := range lMap.Iter() {
+		t.Logf("%v: %v", lm.Key, lm.Value)
+		if count == 4 {
+			if key, ok := lm.Key.(string); ok {
+				if key != "sapporo" {
+					t.Fatalf("invalid key :%v - %v", key, "sapporo")
+				}
+			} else {
+				t.Fatal("key type error")
+			}
+		}
+		count++
+	}
+	t.Log("success LinkedHashedMapSort1")
+}
+
+func Test_LinkedHashedMapSort2(t *testing.T) {
+	lMap := NewLinkedHashMap()
+
+	lMap.Put("tokyo", 3)
+	lMap.Put("yokohama", 23)
+	lMap.Put("kyoto", 44)
+	lMap.Put("sapporo", 65)
+	lMap.Put("fukuoka", 76)
+	lMap.Put("hiroshima", 74)
+	lMap.Put("sendai", 37)
+	lMap.Put("osaka", 89)
+
+	lMap.SortKeyDesc()
+	t.Log(lMap.Keys())
+	t.Log(lMap.Values())
+	count := 0
+	for lm := range lMap.Iter() {
+		t.Logf("%v: %v", lm.Key, lm.Value)
+		if count == 4 {
+			if key, ok := lm.Key.(string); ok {
+				if key != "osaka" {
+					t.Fatalf("invalid key :%v - %v", key, "osaka")
+				}
+			} else {
+				t.Fatal("key type error")
+			}
+		}
+		count++
+	}
+	t.Log("success LinkedHashedMapSort2")
+
+}
+
+func Test_LinkedHashedMapSort3(t *testing.T) {
+	lMap := NewLinkedHashMap()
+
+	lMap.Put("tokyo", 3)
+	lMap.Put("yokohama", 23)
+	lMap.Put("kyoto", 44)
+	lMap.Put("sapporo", 65)
+	lMap.Put("fukuoka", 76)
+	lMap.Put("hiroshima", 74)
+	lMap.Put("sendai", 37)
+	lMap.Put("osaka", 89)
+
+	lMap.SortValueAsc()
+	t.Log(lMap.Keys())
+	t.Log(lMap.Values())
+	count := 0
+	for lm := range lMap.Iter() {
+		t.Logf("%v: %v", lm.Key, lm.Value)
+		if count == 4 {
+			if key, ok := lm.Key.(string); ok {
+				if key != "sapporo" {
+					t.Fatalf("invalid key :%v - %v", key, "sapporo")
+				}
+			} else {
+				t.Fatal("key type error")
+			}
+		}
+		count++
+	}
+	t.Log("success LinkedHashedMapSort3")
+}
+
+func Test_LinkedHashedMapSort4(t *testing.T) {
+	lMap := NewLinkedHashMap()
+
+	lMap.Put("tokyo", 3)
+	lMap.Put("yokohama", 23)
+	lMap.Put("kyoto", 44)
+	lMap.Put("sapporo", 65)
+	lMap.Put("fukuoka", 76)
+	lMap.Put("hiroshima", 74)
+	lMap.Put("sendai", 37)
+	lMap.Put("osaka", 89)
+
+	lMap.SortValueDesc()
+	t.Log(lMap.Keys())
+	t.Log(lMap.Values())
+	count := 0
+	for lm := range lMap.Iter() {
+		t.Logf("%v: %v", lm.Key, lm.Value)
+		if count == 4 {
+			if key, ok := lm.Key.(string); ok {
+				if key != "kyoto" {
+					t.Fatalf("invalid key :%v - %v", key, "kyoto")
+				}
+			} else {
+				t.Fatal("key type error")
+			}
+		}
+		count++
+	}
+	t.Log("success LinkedHashedMapSort4")
+
+}

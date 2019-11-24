@@ -8,7 +8,7 @@
 
 # linkedhashmap
 
-LinkedHashMap provide map with order of elements.
+LinkedHashMap provides map with order of elements.
 
 # Install
 
@@ -43,4 +43,12 @@ $ go get -u github.com/howood/linkedhashmap
 	for lm := range lMap.Iter() {
 		log.Printf("%v: %v", lm.Key, lm.Value)
 	}
+	// sort with key
+	lMap.SortKeyAsc()
+	lMap.SortKeyDesc()
+
+	// sort with value
+	lMap.SortValueAsc()
+	lMap.SortValueDesc()
+
 ```
