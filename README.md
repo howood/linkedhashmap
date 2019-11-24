@@ -19,6 +19,7 @@ $ go get -u github.com/howood/linkedhashmap
 # Usage
 
 ```
+	// create new
 	lMap := NewLinkedHashMap()
 
 	// Set map data
