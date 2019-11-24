@@ -8,21 +8,22 @@ import (
 
 const separetor = " "
 
-type element struct {
+// Element represents linked hashmap element
+type Element struct {
 	Key   interface{}
 	Value interface{}
 }
 
 // LinkedHashMap represents linked hashmap entity
 type LinkedHashMap struct {
-	elements map[string]*element
+	elements map[string]*Element
 	address  []string
 }
 
 // NewLinkedHashMap create LinkedHashMap pointer
 func NewLinkedHashMap() *LinkedHashMap {
 	return &LinkedHashMap{
-		elements: make(map[string]*element, 0),
+		elements: make(map[string]*Element, 0),
 		address:  make([]string, 0),
 	}
 }
@@ -30,7 +31,7 @@ func NewLinkedHashMap() *LinkedHashMap {
 // Put puts a new element into linked hashmap
 func (jc *LinkedHashMap) Put(key, value interface{}) {
 	hashkey := jc.generateHash(key)
-	jc.elements[hashkey] = &element{
+	jc.elements[hashkey] = &Element{
 		Key:   key,
 		Value: value,
 	}
@@ -52,8 +53,8 @@ func (jc *LinkedHashMap) Remove(key interface{}) {
 }
 
 // Iter iterates over each elements of linked hashmap
-func (jc *LinkedHashMap) Iter() <-chan *element {
-	ch := make(chan *element, len(jc.address))
+func (jc *LinkedHashMap) Iter() <-chan *Element {
+	ch := make(chan *Element, len(jc.address))
 	go func() {
 		defer close(ch)
 		for _, hashkey := range jc.address {
