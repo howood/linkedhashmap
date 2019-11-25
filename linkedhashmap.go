@@ -8,8 +8,6 @@ import (
 	"sort"
 )
 
-const separetor = " "
-
 // Element represents linked hashmap element
 type Element struct {
 	Key   interface{}
