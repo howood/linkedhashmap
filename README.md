@@ -1,6 +1,7 @@
 [![Build Status](https://travis-ci.org/howood/linkedhashmap.svg?branch=master)](https://travis-ci.org/howood/linkedhashmap)
 [![GitHub release](http://img.shields.io/github/release/howood/linkedhashmap.svg?style=flat-square)][release]
 [![godoc](https://img.shields.io/badge/godoc-reference-blue.svg?style=flat-square)](http://godoc.org/github.com/howood/linkedhashmap)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/203a651b28ac2017b4a1/test_coverage)](https://codeclimate.com/github/howood/linkedhashmap/test_coverage)
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)][license]
 
 [release]: https://github.com/howood/linkedhashmap/releases
