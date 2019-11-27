@@ -15,6 +15,7 @@ func Test_LinkedHashedMap(t *testing.T) {
 	lMap.Put("hiroshima", 74)
 	lMap.Put("sendai", 67)
 	lMap.Put("osaka", 89)
+	lMap.Put("osaka", 77)
 
 	t.Log(lMap.Keys())
 	t.Log(lMap.Values())
