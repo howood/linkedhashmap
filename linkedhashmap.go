@@ -8,11 +8,11 @@ import (
 	"sort"
 )
 
-type hashDataType string
+type hashMapDataType string
 
 const (
-	hashDatTypeKeys   hashDataType = "keys"
-	hashDatTypeValues hashDataType = "values"
+	dataTypeKeys   hashMapDataType = "keys"
+	dataTypeValues hashMapDataType = "values"
 )
 
 // Element represents linked hashmap element
@@ -73,12 +73,12 @@ func (jc *LinkedHashMap) Iter() <-chan *Element {
 
 // Keys gets all keys of linked hashmap
 func (jc *LinkedHashMap) Keys() []interface{} {
-	return jc.getKeysOrValues(hashDatTypeKeys)
+	return jc.getKeysOrValues(dataTypeKeys)
 }
 
 // Values gets all values of linked hashmap
 func (jc *LinkedHashMap) Values() []interface{} {
-	return jc.getKeysOrValues(hashDatTypeValues)
+	return jc.getKeysOrValues(dataTypeValues)
 }
 
 // SortKeyAsc sorts linked hashmap ascending order with key
@@ -166,16 +166,16 @@ func (jc *LinkedHashMap) isInAddress(hashkey string) bool {
 	return false
 }
 
-func (jc *LinkedHashMap) getKeysOrValues(datatype hashDataType) []interface{} {
-	hashdatas := make([]interface{}, 0, len(jc.address))
+func (jc *LinkedHashMap) getKeysOrValues(datatype hashMapDataType) []interface{} {
+	hashmapdata := make([]interface{}, 0, len(jc.address))
 	for _, hashkey := range jc.address {
 		elem := jc.elements[hashkey]
 		switch datatype {
-		case hashDatTypeKeys:
-			hashdatas = append(hashdatas, elem.Key)
-		case hashDatTypeValues:
-			hashdatas = append(hashdatas, elem.Value)
+		case dataTypeKeys:
+			hashmapdata = append(hashmapdata, elem.Key)
+		case dataTypeValues:
+			hashmapdata = append(hashmapdata, elem.Value)
 		}
 	}
-	return hashdatas
+	return hashmapdata
 }
